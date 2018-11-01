@@ -2,5 +2,5 @@ import enum
 
 
 class ControlType(enum.IntEnum):
-    Autonomus = 0
+    Autonomous = 0
     RemoteControlled = 1

@@ -29,10 +29,10 @@ line_follower_car = LineFollowerCar(car, left_sensor, right_sensor)
 def change_car_control_type():
     global car_control_mode;
 
-    if car_control_mode == ControlType.Autonomus:
+    if car_control_mode == ControlType.Autonomous:
         car_control_mode = ControlType.RemoteControlled
     else:
-        car_control_mode = ControlType.Autonomus
+        car_control_mode = ControlType.Autonomous
 
 try:
     led.blink()
