@@ -6,7 +6,7 @@ class Signals:
 
     def __init__(self, car_control_type):
         self.car_control_type = car_control_type
-        self.led = LED(17)
+        self.led = LED(16)
         self.buzzer = Buzzer(21, active_high=False)
 
     def waiting_for_client(self):
