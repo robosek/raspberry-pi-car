@@ -3,7 +3,7 @@ Raspberry pi car main control script
 
 ![Racing car](car.gif)
 
-##Assembly:
+## Assembly
 ### Motors raspberry connection
 - GPIO 27 - IN 1
 - GPIO 22 - IN 2
