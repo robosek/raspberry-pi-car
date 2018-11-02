@@ -1,29 +1,28 @@
-class ControlledCar:
+from car import Car
 
-    def __init__(self, car):
-        self.car = car
+
+class ControlledCar(Car):
+
+    def __init__(self, right_motor_correction_speed=1, left_motor_correction_speed=1):
+        super().__init__(right_motor_correction_speed, left_motor_correction_speed)
 
     def __forward__(self, speed=1):
-        self.car.right_motor.forward(self.car.right_motor_speed * speed)
-        self.car.left_motor.forward(self.car.left_motor_speed * speed)
+        self.right_motor.forward(self.right_motor_correction_speed * speed)
+        self.left_motor.forward(self.left_motor_correction_speed * speed)
 
     def __backward__(self, speed=1):
-        self.car.right_motor.backward(self.car.right_motor_speed * speed)
-        self.car.left_motor.backward(self.car.left_motor_speed * speed)
+        self.right_motor.backward(self.right_motor_correction_speed * speed)
+        self.left_motor.backward(self.left_motor_correction_speed * speed)
 
     def __left__(self, speed=1):
-        self.car.right_motor.forward(self.car.right_motor_speed * speed)
-        self.car.left_motor.backward(self.car.left_motor_speed * speed)
+        self.right_motor.forward(self.right_motor_correction_speed * speed)
+        self.left_motor.backward(self.left_motor_correction_speed * speed)
 
     def __right__(self, speed=1):
-        self.car.right_motor.backward(self.car.right_motor_speed * speed)
-        self.car.left_motor.forward(self.car.left_motor_speed * speed)
+        self.right_motor.backward(self.right_motor_correction_speed * speed)
+        self.left_motor.forward(self.left_motor_correction_speed * speed)
 
-    def stop(self):
-        self.car.right_motor.stop()
-        self.car.left_motor.stop()
-
-    def move(self, position, forward_speed = 1, backward_speed = 1, left_speed = 1, right_speed = 1):
+    def move(self, position, forward_speed=1, backward_speed=1, left_speed=1, right_speed=1):
         if position.top:
             self.__forward__(forward_speed)
         elif position.bottom:
@@ -32,3 +31,7 @@ class ControlledCar:
             self.__right__(right_speed)
         elif position.left:
             self.__left__(left_speed)
+
+    def stop(self):
+        self.right_motor.stop()
+        self.left_motor.stop()
