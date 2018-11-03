@@ -8,7 +8,7 @@ car_control_mode = ControlType.RemoteControlled
 
 bd = BlueDot()
 signals = Signals(car_control_mode)
-car_warden = CarWarden(car_control_mode)
+car_warden = CarWarden(car_control_mode, signals)
 
 try:
     signals.waiting_for_client()
