@@ -3,8 +3,8 @@ from car import Car
 
 class ControlledCar(Car):
 
-    def __init__(self, right_motor_correction_speed=1, left_motor_correction_speed=1):
-        super().__init__(right_motor_correction_speed, left_motor_correction_speed)
+    def __init__(self, left_motor, right_motor, right_motor_correction_speed=1, left_motor_correction_speed=1):
+        super().__init__(left_motor, right_motor, right_motor_correction_speed, left_motor_correction_speed)
 
     def __forward__(self, speed=1):
         self.right_motor.forward(self.right_motor_correction_speed * speed)

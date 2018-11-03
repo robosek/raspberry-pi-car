@@ -4,8 +4,8 @@ from car import Car
 
 class LineFollowerCar(Car):
 
-    def __init__(self, speed = 1,right_motor_correction_speed=1, left_motor_correction_speed=1):
-        super().__init__(right_motor_correction_speed, left_motor_correction_speed)
+    def __init__(self, left_motor, right_motor, speed = 1,right_motor_correction_speed=1, left_motor_correction_speed=1):
+        super().__init__(left_motor, right_motor, right_motor_correction_speed, left_motor_correction_speed)
         self.left_sensor = LineSensor(23)
         self.right_sensor = LineSensor(24)
         self.speed = speed

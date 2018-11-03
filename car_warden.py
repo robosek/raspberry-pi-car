@@ -12,8 +12,8 @@ class CarWarden:
         left_motor = Motor(22, 27)
         self.car_control_mode = car_control_mode
         self.signals = signals
-        self.controlled_car = ControlledCar(right_motor, left_motor)
-        self.line_follower_car = LineFollowerCar(0.65, right_motor, left_motor)
+        self.controlled_car = ControlledCar(left_motor, right_motor)
+        self.line_follower_car = LineFollowerCar(left_motor,right_motor,  speed=0.4)
 
     def move(self, position):
         if self.car_control_mode == ControlType.RemoteControlled:
