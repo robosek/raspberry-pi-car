@@ -8,14 +8,14 @@ signals = Signals()
 car_warden = CarWarden(signals)
 
 def move(position):
-    if bd.interaction.duration > 3.0 and position.middle:
+    if bd.interaction.duration > 1.0 and position.middle:
         signals.buzzer.on()
     car_warden.move(position)
             
 def stop(position):
     signals.buzzer.off()
     car_warden.stop(position)
-    if bd.interaction.duration > 3.0 and position.middle:
+    if bd.interaction.duration > 1.0 and position.middle:
         car_warden.change_car_control_type(position)
 
 try:

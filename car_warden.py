@@ -28,13 +28,12 @@ class CarWarden:
             self.line_follower_car.stop()
 
     def change_car_control_type(self, position):
+        self.stop(position)
         if self.car_control_mode == ControlType.Autonomous:
             self.car_control_mode = ControlType.RemoteControlled
             self.signals.enabled_remote_controlled_mode()
-            self.stop(position)
             self.move(position)
         else:
             self.car_control_mode = ControlType.Autonomous
             self.signals.enabled_autnomous_mode()
-            self.stop(position)
             self.move(position)

@@ -17,23 +17,30 @@ class LineFollowerCar(Car):
         self.left()
         time.sleep(0.3)
         self.right()
-
-    
+        time.sleep(0.3)
+        self.right_motor.stop()
+        self.left_motor.stop()
+        time.sleep(0.3)
+        if not self.ride:
+            self.stop()
+        
     def forward(self):
-        self.right_motor.forward(self.right_motor_correction_speed * self.speed)
+        self.right_motor.forward(self.speed)
         self.left_motor.forward(self.speed)
+        if not self.ride:
+            self.stop()
     
     def backward(self):
-        self.right_motor.backward(self.right_motor_correction_speed * self.speed)
+        self.right_motor.backward(self.speed)
         self.left_motor.backward(self.speed)
 
     def left(self):
-        self.right_motor.forward(self.right_motor_correction_speed * self.speed)
+        self.right_motor.forward(self.speed)
         self.left_motor.backward(self.speed)
 
     def right(self):
-        self.right_motor.forward(self.right_motor_correction_speed * self.speed)
-        self.left_motor.backward(self.speed)
+        self.right_motor.backward(self.speed)
+        self.left_motor.forward(self.speed  * 1.2)
 
     def move(self):
         self.ride = True
@@ -43,12 +50,14 @@ class LineFollowerCar(Car):
                 self.forward()
             else:
                 self.try_to_find_line()
+        time.sleep(0.3)
 
 
     def stop(self):
+        self.ride = False
         self.right_motor.stop()
         self.left_motor.stop()
-        self.ride = False
+        
         #self.right_sensor.close()
         #self.left_sensor.close()
 
