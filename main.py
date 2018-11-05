@@ -1,30 +1,25 @@
 from bluedot import BlueDot
 from signal import pause
 from car_warden import CarWarden
-from control_type import ControlType
 from signals import Signals
 
-car_control_mode = ControlType.RemoteControlled
-
 bd = BlueDot()
-bd.rotation_segments = 2
-signals = Signals(car_control_mode)
-car_warden = CarWarden(car_control_mode, signals)
+signals = Signals()
+car_warden = CarWarden(signals)
 
 def move(position):
-    car_warden.move(position)
     if bd.interaction.duration > 3.0 and position.middle:
         signals.buzzer.on()
+    car_warden.move(position)
             
 def stop(position):
+    signals.buzzer.off()
     car_warden.stop(position)
     if bd.interaction.duration > 3.0 and position.middle:
         car_warden.change_car_control_type(position)
-    signals.buzzer.off()
-    
 
 try:
-    signals.waiting_for_client("")
+    signals.waiting_for_client(0)
 
     bd.when_pressed = move
     bd.when_moved = move
