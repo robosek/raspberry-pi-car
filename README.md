@@ -19,7 +19,7 @@ Raspberry pi car main control script
 - left side - 
 - right side +
 
-#### Video streaming (almost non delay):
+### Video streaming (almost non delay):
 Prerequisites:
 - Client machine should use linux system
 - Install `gst-launch-1.0` on both raspbian and linux system
